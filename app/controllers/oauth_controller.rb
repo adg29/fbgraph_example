@@ -1,11 +1,11 @@
 class OauthController < ApplicationController
   
   def start
-    redirect_to client.authorization.authorize_url(:redirect_uri => callback_oauths_url , :scope => 'email,user_photos,friends_photos,publish_stream')
+    redirect_to client.authorization.authorize_url(:redirect_uri => "http://review.kbsp.com:5000/" , :scope => 'email,user_photos,friends_photos,publish_stream')
   end
 
   def callback
-    access_token = client.authorization.process_callback(params[:code], :redirect_uri => callback_oauths_url)
+    access_token = client.authorization.process_callback(params[:code], :redirect_uri => "http://review.kbsp.com:5000/")
     session[:access_token] = access_token
     user_json = client.selection.me.info!
     # in reality you would at this point store the access_token.token value as well as 
@@ -14,7 +14,7 @@ class OauthController < ApplicationController
   end
 
   def oclient
-    OAuth2::Client.new('114709451898747','7c87164749a02552e3d204142e3af16b', :site => 'https://graph.facebook.com')
+    OAuth2::Client.new('221080797977441','6d7dd77e070fe5748e7650c4bd65c0a2', :site => 'https://graph.facebook.com')
   end
   
 end

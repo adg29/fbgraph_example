@@ -1,14 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.beta3'
+#gem 'rails', '3.0.0.beta3'
+gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
+gem "mysql", "~> 2.8.1"
+
 
 # Use unicorn as the web server
- gem 'mongrel'
+# gem 'mongrel'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -26,7 +29,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 gem 'oauth2'
-gem 'ruby-debug'
+#gem 'ruby-debug'
 gem 'json'
+gem 'jquery-rails'
 gem 'fbgraph'
-gem 'haml'
+gem "haml", "~> 3.1.4"
+
+gem 'activemerchant'
+gem 'rails_legacy_mapper'
