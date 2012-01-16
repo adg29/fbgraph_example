@@ -1,4 +1,4 @@
-- form_tag do
+= form_tag do
   .field
     = label_tag :query
     = text_field_tag :q
@@ -8,3 +8,107 @@
   .field
     = submit_tag 'search'
     
+
+%h2#searching Searching
+%p
+  You can search over all public objects in the social graph with
+  = succeed "." do
+    %code https://graph.facebook.com/search
+  The format is:
+%pre
+  %code
+    :preserve
+      https://graph.facebook.com/search?q=QUERY&type=OBJECT_TYPE
+%p We support search for the following types of objects:
+%ul
+  %li
+    All public posts:
+    %a{:href => "https://graph.facebook.com/search?q=watermelon&type=post&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=watermelon&type=
+      %strong post
+  %li
+    People:
+    %a{:href => "https://graph.facebook.com/search?q=mark&type=user&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=mark&type=
+      %strong user
+  %li
+    Pages:
+    %a{:href => "https://graph.facebook.com/search?q=platform&type=page&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=platform&type=
+      %strong page
+  %li
+    Events:
+    %a{:href => "https://graph.facebook.com/search?q=conference&type=event&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=conference&type=
+      %strong event
+  %li
+    Groups:
+    %a{:href => "https://graph.facebook.com/search?q=programming&type=group&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=programming&type=
+      %strong group
+  %li
+    Places:
+    %a{:href => "https://graph.facebook.com/search?q=coffee&type=place&center=37.76,-122.427&distance=1000&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?q=coffee&type=
+      %strong> place
+      \&center=37.76,122.427&distance=1000
+  %li
+    Checkins:
+    %a{:href => "https://graph.facebook.com/search?type=checkin&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?type=
+      %strong checkin
+%p
+  You can restrict the fields returned by these searches using the
+  %code ?fields=
+  URL parameter, in the same way you can when
+  %a{:href => "#reading"} reading
+  other objects. For example, to get only the names of events, you can do the following:
+%ul
+  %li
+    Event Names:
+    %a{:href => "https://graph.facebook.com/search?fields=name&q=conference&type=event&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
+      https://graph.facebook.com/search?
+      %strong> fields=name
+      \&q=conference&type=
+      %strong event
+%p
+  Some fields such as
+  = succeed "," do
+    %code id
+  and
+  %code start_time
+  for events, are always returned.
+%p
+  You can also search an individual user's News Feed, restricted to that user's friends, by adding a
+  %code q
+  argument to the
+  %code home
+  connection URL:
+%ul
+  %li
+    News Feed:
+    %a{:href => "https://graph.facebook.com/me/home?q=facebook&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"} https://graph.facebook.com/me/home?q=facebook
+%p
+  When searching for public posts or posts on the user's News Feed, you can page over the results by using the
+  = succeed "," do
+    %code since
+  %code until
+  and
+  %code limit
+  parameters.
+  %code since
+  and
+  %code until
+  both accept a unix timestamp. When paging back in time, you should use
+  %code until
+  in conjunction with
+  %code limit
+  where
+  %code until
+  is the unixtime value of the
+  %code created_time
+  field in the last object returned by your previous query. When paging forward in time you should set
+  %code since
+  to be the unixtime value of the
+  %code created_time
+  field in the first object returned by your previous query.
