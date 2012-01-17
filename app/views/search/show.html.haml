@@ -1,15 +1,5 @@
-= form_tag do
-  .field
-    = label_tag :query
-    = text_field_tag :q
-  .field
-    = label_tag :on
-    = text_field_tag :on
-  .field
-    = submit_tag 'search'
-    
-
 %h2#searching Searching
+
 %p
   You can search over all public objects in the social graph with
   = succeed "." do
@@ -57,6 +47,18 @@
     %a{:href => "https://graph.facebook.com/search?type=checkin&access_token=AAAAAAITEghMBAKZAL4eblkf2DbUu9QPQPOfq4WXVDQyVu8VvZALI5npHRKsjNWEO5GaBzi6k3wKizhTtJS8uUu8rNBsYpDYvsK7EPvYAZDZD"}
       https://graph.facebook.com/search?type=
       %strong checkin
+
+= form_tag do
+  .field
+    = label_tag :query
+    = text_field_tag :q
+  .field
+    = label_tag :on
+    = text_field_tag :on
+  .field
+    = submit_tag 'search'
+    
+
 %p
   You can restrict the fields returned by these searches using the
   %code ?fields=
