@@ -32,6 +32,16 @@ gem 'oauth2'
 #gem 'ruby-debug'
 gem 'json'
 gem 'jquery-rails'
+gem 'jquery_mobile_rails'
+
+group :assets do
+  gem 'therubyracer'
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+
 gem 'fbgraph'
 gem "haml", "~> 3.1.4"
 
