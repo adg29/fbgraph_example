@@ -7,8 +7,8 @@ FbauthExample::Application.routes.draw do
     end
   end
   
-  resources :selections
-  resources :pictures
+  resource :selections, :controller => 'selections'
+  resource :home, :controller => 'home'
   resource :search , :controller => 'search'
   resources :publish_feeds
 

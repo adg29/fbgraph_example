@@ -2,6 +2,9 @@ class SelectionsController < ApplicationController
   
   def index
   end
+
+  def show 
+  end
   
   def create
     selection = client.selection

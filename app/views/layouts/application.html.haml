@@ -13,13 +13,13 @@
         %div{"data-role" => "navbar"}
           %ul
             %li
-              = link_to search_path, :class => ("ui-btn-active" if controller_name== 'home'), :"data-icon" => "home", :"data-iconpos" => "top" do
+              = link_to home_path, :class => ("ui-btn-active" if controller_name== 'home'), :"data-icon" => "home", :"data-iconpos" => "top" do
                 Home
             %li
               = link_to search_path, :class => ("ui-btn-active" if controller_name == 'search'), :"data-icon" => "search", :"data-iconpos" => "top" do
                 Search 
             %li
-              = link_to search_path, :class => ("ui-btn-active" if controller_name == 'selection'), :"data-icon" => "check", :"data-iconpos" => "top" do
+              = link_to selections_path, :class => ("ui-btn-active" if controller_name == 'selection'), :"data-icon" => "check", :"data-iconpos" => "top" do
                 Selection 
 
 
