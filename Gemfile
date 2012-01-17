@@ -33,6 +33,7 @@ gem 'oauth2'
 gem 'json'
 gem 'jquery-rails'
 gem 'jquery_mobile_rails'
+gem 'mobylette'
 
 group :assets do
   gem 'therubyracer'
