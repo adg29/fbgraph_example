@@ -1,0 +1,48 @@
+%h2#selection Selection
+
+%h3
+  Example query
+%h4
+  Alangalan's user info
+%p 
+  %strong Type
+  %code user
+  %strong Object 
+  %code alangalan
+%h4
+  Dwanye Wade's fan page
+%p 
+  %strong Type
+  %code page 
+  %strong Object 
+  %code 198741855857 
+
+= form_tag do
+  .field
+    = label_tag :type
+    = text_field_tag :type
+  .field
+    = label_tag :object
+    = text_field_tag :object
+  .field
+    = label_tag :connection_type
+    = text_field_tag :connection_type
+  .field
+    = submit_tag 'select'
+
+%p
+  By default, most object properties are returned when you make a query.  You can choose the fields (or connections) you want returned with the "fields" query parameter.  For example, this URL will only return the id, name, and picture of Ben:
+  %a{:href => "https://graph.facebook.com/bgolub?fields=id,name,picture&access_token=AAAAAAITEghMBABOzpkdwZCmAv3ZCghTroJZAKBYjn1cVqjmIO3cPMv7efT8Ep0HDlsgD04xnOLw8HvEdsbLnVWd0q0gUr8xPAxm774iBwZDZD"} https://graph.facebook.com/bgolub?fields=id,name,picture
+%p
+  You can also request multiple objects in a single query using the "ids" query parameter.  For example, the URL
+  %a{:href => "https://graph.facebook.com/?ids=arjun,vernal&access_token=AAAAAAITEghMBABOzpkdwZCmAv3ZCghTroJZAKBYjn1cVqjmIO3cPMv7efT8Ep0HDlsgD04xnOLw8HvEdsbLnVWd0q0gUr8xPAxm774iBwZDZD"} https://graph.facebook.com?ids=arjun,vernal
+  returns both profiles in the same response.
+%p
+  The "ids" query parameter also accepts URLs. This is useful for finding IDs of URLs in the Open Graph. For example:
+  %a{:href => "https://graph.facebook.com/?ids=http://www.imdb.com/title/tt0117500/"} https://graph.facebook.com/?ids=http://www.imdb.com/title/tt0117500/
+%p
+  Additionally, there is a special identifier
+  %code me
+  which refers to the current user. So the URL
+  %a{:href => "https://graph.facebook.com/me?access_token=AAAAAAITEghMBABOzpkdwZCmAv3ZCghTroJZAKBYjn1cVqjmIO3cPMv7efT8Ep0HDlsgD04xnOLw8HvEdsbLnVWd0q0gUr8xPAxm774iBwZDZD"} https://graph.facebook.com/me
+  returns the active user's profile.
