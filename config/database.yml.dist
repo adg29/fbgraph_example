@@ -2,7 +2,7 @@ development:
   adapter: mysql
   database: rdiospy 
   username: root 
-  password: varick160 
+  password: root 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -11,11 +11,11 @@ test:
   adapter: mysql
   database: ims_test
   username: root
-  password: varick160
+  password: root 
 
 production:
   adapter: mysql
   database: ims_production
   username: root
-  password: varick160
+  password: root 
 
