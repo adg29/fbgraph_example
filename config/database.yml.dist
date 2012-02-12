@@ -1,0 +1,21 @@
+development:
+  adapter: mysql
+  database: rdiospy 
+  username: root 
+  password: root 
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: mysql
+  database: ims_test
+  username: root
+  password: root 
+
+production:
+  adapter: mysql
+  database: ims_production
+  username: root
+  password: root 
+
